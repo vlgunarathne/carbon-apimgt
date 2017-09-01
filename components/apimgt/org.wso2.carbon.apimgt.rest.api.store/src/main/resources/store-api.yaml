@@ -2590,6 +2590,8 @@ paths:
         This operation will provide a list of programming languages that are supported by the swagger codegen library for generating System Development Kits (SDKs) for APIs available in the API Manager Store
       tags:
         - SDK Language list.
+        - API Collection
+        - Retrieve
       responses:
         200:
           description:  |
