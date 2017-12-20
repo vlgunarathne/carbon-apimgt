@@ -165,8 +165,12 @@ var select_environment = function(){
     if (!jagg.loggedIn) {
         return;
     }
+    var api = jagg.api;
     jagg.post("/site/blocks/api/api-info/ajax/api-info.jag", {
-        action:"getCustomOAuthHeader"
+        action:"getCustomOAuthHeader",
+        name:api.name,
+        provider:api.provider,
+        version:api.version
     }, function(result){
         customHeader = result.customHeader;
         var key = that;
