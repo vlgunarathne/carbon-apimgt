@@ -414,6 +414,7 @@ public class APIProviderHostObject extends ScriptableObject {
         String environments = (String) apiData.get("environments", apiData);
         String responseCache = (String) apiData.get("responseCache", apiData);
         String corsConfiguraion = (String) apiData.get("corsConfiguration", apiData);
+        String customOAuth2Header = (String) apiData.get("customOAuth2Header", apiData);
 
         int cacheTimeOut = APIConstants.API_RESPONSE_CACHE_TIMEOUT;
         if (APIConstants.ENABLED.equalsIgnoreCase(responseCache)) {
@@ -489,6 +490,9 @@ public class APIProviderHostObject extends ScriptableObject {
         CORSConfiguration corsConfiguration = APIUtil.getCorsConfigurationDtoFromJson(corsConfiguraion);
         if (corsConfiguration != null) {
             api.setCorsConfiguration(corsConfiguration);
+        }
+        if (!StringUtils.isBlank(customOAuth2Header)) {
+            api.setCustomOAuth2Header(customOAuth2Header);
         }
         Set<Tier> availableTier = new HashSet<Tier>();
         String[] tierNames;
@@ -2738,6 +2742,7 @@ public class APIProviderHostObject extends ScriptableObject {
                 myn.put(50, myn, checkValue(policiesSet.toString()));
                 myn.put(51, myn, checkValue(api.getApiLevelPolicy()));
                 myn.put(52, myn, checkValue(api.getType()));
+                myn.put(53, myn, checkValue(api.getCustomOAuth2Header()));
             } else {
                 handleException("Cannot find the requested API- " + apiName +
                         "-" + version);
