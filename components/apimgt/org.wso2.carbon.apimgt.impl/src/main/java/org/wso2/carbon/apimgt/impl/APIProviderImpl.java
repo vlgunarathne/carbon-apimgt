@@ -1722,7 +1722,11 @@ class APIProviderImpl extends AbstractAPIManager implements APIProvider {
 
         //Get CustomOAuth2Header from tenant registry or api-manager.xml
 
-        String customOAuth2Header = APIUtil.getOAuthConfiguration(tenantId, APIConstants.CUSTOM_OAUTH2_HEADER, api.getId().getProviderName(), api.getId().getApiName(), api.getId().getVersion());
+        String customOAuth2Header = APIUtil.getOAuthConfiguration(tenantId,
+                APIConstants.CUSTOM_OAUTH2_HEADER,
+                api.getId().getProviderName(),
+                api.getId().getApiName(),
+                api.getId().getVersion());
         if (!StringUtils.isBlank(customOAuth2Header)) {
             corsProperties.put(APIConstants.CUSTOM_OAUTH2_HEADER, customOAuth2Header);
         }
@@ -1771,7 +1775,6 @@ class APIProviderImpl extends AbstractAPIManager implements APIProvider {
 
                 Map<String, String> authProperties = new HashMap<String, String>();
                 //Get CustomOAuth2Header from tenant registry or api-manager.xml
-                //String customOAuth2Header = APIUtil.getOAuthConfiguration(tenantId, APIConstants.CUSTOM_OAUTH2_HEADER);
                 if (!StringUtils.isBlank(customOAuth2Header)){
                     authProperties.put(APIConstants.CUSTOM_OAUTH2_HEADER, customOAuth2Header);
                 }

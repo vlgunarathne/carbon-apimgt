@@ -161,10 +161,7 @@ var select_environment = function(){
   $.ajaxSetup({
         contentType: "application/x-www-form-urlencoded; charset=utf-8"
     });
-    jagg.sessionAwareJS({redirect:'/site/pages/index.jag'});
-    if (!jagg.loggedIn) {
-        return;
-    }
+
     var api = jagg.api;
     jagg.post("/site/blocks/api/api-info/ajax/api-info.jag", {
         action:"getCustomOAuthHeader",
